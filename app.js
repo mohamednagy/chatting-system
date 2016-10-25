@@ -14,6 +14,10 @@ io.on('connection', function (socket) {
 
   console.log("client connected");
 
+  socket.on('group-chat', function(message){
+    io.emit('group-chat', message);
+  });
+
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });
