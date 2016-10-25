@@ -9,7 +9,7 @@ app.get('/', function(req, res){
   res.sendFile(__dirname+'/views/index.html');
 });
 
-
+var connectedUsers = {};
 io.on('connection', function (socket) {
 
   console.log("client connected");
@@ -18,8 +18,16 @@ io.on('connection', function (socket) {
     io.emit('group-chat', message);
   });
 
+  socket.on('connected-users', function(message){
+    if(connectedUsers[socket.id] == null){
+        connectedUsers[socket.id] = message.username;
+        io.emit('connected-users', connectedUsers);
+    }
+  });
+
   socket.on('disconnect', function(){
-    console.log('user disconnected');
+    delete connectedUsers[socket.id];
+    io.emit('connected-users', connectedUsers);
   });
 
 });
