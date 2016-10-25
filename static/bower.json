@@ -1,0 +1,22 @@
+{
+  "name": "static",
+  "authors": [
+    "Mohamed Nagy <mohamed.n.haleem@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "socket.io-client": "^1.5.1",
+    "jquery": "^3.1.1"
+  }
+}
